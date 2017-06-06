@@ -190,9 +190,12 @@ class TICC1101(object):
             self._writeSingleByte(self.FREQ2, 0x10)
             self._writeSingleByte(self.FREQ1, 0xA7)
             self._writeSingleByte(self.FREQ0, 0x62)
-
+        elif freq == 868:
+            self._writeSingleByte(self.FREQ2, 0x21)
+            self._writeSingleByte(self.FREQ1, 0x62)
+            self._writeSingleByte(self.FREQ0, 0x76)
         else:
-            raise Exception("Only 433MHz is currently supported")
+            raise Exception("Only 433MHz and 868MHz are currently supported")
 
     def setChannel(self, channel=0x00):
         self._writeSingleByte(self.CHANNR, channel)
